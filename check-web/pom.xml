@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.cmdi</groupId>
+    <artifactId>check-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.cmdi</groupId>
+  <artifactId>check-web</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>check-web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- dubbo dependency -->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>2.5.3</version>
+         <!--去除引入的spring -->
+	    <exclusions>
+	       <exclusion>
+	       		<groupId>org.springframework</groupId>
+	       		<artifactId>spring</artifactId>
+			</exclusion>
+     	</exclusions>
+     </dependency>
+     <dependency>
+        <groupId>org.javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>3.18.2-GA</version>
+     </dependency>
+	 <dependency> 
+		<groupId>com.101tec</groupId>
+		
+		<artifactId>zkclient</artifactId>
+		<version>0.10</version>
+	 </dependency>
+   	<dependency>
+		<groupId>com.cmdi</groupId>
+		<artifactId>check-service-api</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>com.cmdi</groupId>
+		<artifactId>check-commons</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	  <dependency>
+	     <groupId>org.eclipse.jetty</groupId>
+	     <artifactId>jetty-jsp</artifactId>
+	     <version>9.0.0.v20130308</version>
+	  </dependency>
+  </dependencies>
+  <build>
+    <finalName>check-web</finalName>
+ 
+	<plugins>
+		<plugin>
+	        <groupId>org.mortbay.jetty</groupId>
+	        <artifactId>jetty-maven-plugin</artifactId>
+	        <version>8.1.16.v20140903</version>
+	        <configuration>
+	        	<httpConnector>
+					<port>9090</port>
+				</httpConnector>
+	            <scanIntervalSeconds>10</scanIntervalSeconds>
+	            <webApp>
+	                <contextPath>/</contextPath>
+	            </webApp>
+	            <connectors>
+	                <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+	                    <port>8082</port>
+	                </connector>
+	            </connectors>
+	        </configuration>
+	    </plugin>      
+	</plugins>
+  </build>
+</project>
