@@ -11,11 +11,14 @@
 	<dubbo:application name="check-service" />
 
 	<!-- 使用zookeeper广播注册中心暴露服务地址 -->
-	<dubbo:registry id="service1" protocol="zookeeper" address="localhost:2182" />
+	<dubbo:registry id="service1" protocol="zookeeper" address="112.35.29.127:2181" />
 	
 	<dubbo:protocol name="dubbo"  port="20880"  />
 	
 	<dubbo:service interface="com.cmdi.check.service.api.IUserService" ref="userService" />
 	<bean id="userService" class="com.cmdi.check.serviceImpl.UserServiceImpl" />
+
+	<dubbo:service interface="com.cmdi.check.service.api.IGoodService" ref="goodService" />
+	<bean id="goodService" class="com.cmdi.check.serviceImpl.GoodServiceImpl" />
 
 </beans>

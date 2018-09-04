@@ -11,7 +11,7 @@
     <dubbo:application name="consumer" />  
   
     <!-- registry address, used for consumer to discover services -->  
-    <dubbo:registry address="zookeeper://127.0.0.1:2182" check="false"/>  
+    <dubbo:registry address="zookeeper://112.35.29.127:2182" check="false"/>
     <dubbo:consumer timeout="5000"/>  
     <!-- 引用的服务 -->  
     <dubbo:reference id="userService" interface="com.cmdi.check.service.api.IUserService" />  

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdi.check.dao.GoodDAO">
+
+	
+
+	<!-- 获取用户信息 -->
+    <select id="getGood" resultType="com.cmdi.check.model.Good">
+    	select * from good ;
+    </select>
+
+
+    
+    <insert id="addGood" keyColumn="id" keyProperty="id" useGeneratedKeys="true" parameterType="com.cmdi.check.model.Good" >
+    	<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      		SELECT LAST_INSERT_ID();
+    	</selectKey>
+    	insert into good(name,type) values(#{name},#{type});
+    </insert>
+
+</mapper>
